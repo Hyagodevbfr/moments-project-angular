@@ -60,3 +60,39 @@ input[type="submit"]:hover {
   border-left: 3px solid #dc3545;
   padding-left: 0.2em;
 }
+
+.edit-btn,
+.remove-btn {
+  border: 1px solid #efefef;
+  padding: 0.4em 1em;
+  font-size: 1em;
+  margin: 0 0.5em;
+  cursor: pointer;
+  background-color: #fff;
+  transition: 0.4s;
+}
+button fa-icon,
+a fa-icon {
+  margin-right: 0.2em;
+}
+.edit-btn,
+.edit-btn patch {
+  border-color: #007bff;
+  color: #007bff;
+}
+.edit-btn:hover,
+.edit-btn:hover patch {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.remove-btn,
+.remove-btn patch {
+  border-color: #ff4400;
+  color: #ff4400;
+}
+.remove-btn:hover,
+.remove-btn:hover patch {
+  background-color: #ff4400;
+  color: #fff;
+}
