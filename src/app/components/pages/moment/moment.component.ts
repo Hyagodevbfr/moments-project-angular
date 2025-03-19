@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { MomentService } from 'src/app/services/moment.service';
 import { Moment } from 'src/app/interfaces/moment';
+import { environment } from 'environment/environment';
+import { faTimes, faEdit, faE } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-moment',
@@ -11,6 +13,10 @@ import { Moment } from 'src/app/interfaces/moment';
 })
 export class MomentComponent {
   moment?: Moment;
+  baseApiUrl = environment.baseApiUrl;
+
+  faTimes = faTimes;
+  faEdit = faEdit;
 
   constructor(
     private momentService: MomentService,
