@@ -8,17 +8,27 @@ import { Moment } from 'src/app/interfaces/moment';
   styleUrls: ['./moment-form.component.css'],
 })
 export class MomentFormComponent implements OnInit {
+  @Output() onSubmit = new EventEmitter<Moment>();
+  @Input() btnText!: string;
+  @Input() momentData: Moment | null = null;
+
+  momentForm!: FormGroup;
+
   constructor() {}
+
   ngOnInit(): void {
     this.momentForm = new FormGroup({
-      id: new FormControl(''),
-      title: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
+      id: new FormControl(this.momentData ? this.momentData.id : ''),
+      title: new FormControl(this.momentData ? this.momentData.title : '', [
+        Validators.required,
+      ]),
+      description: new FormControl(
+        this.momentData ? this.momentData.description : '',
+        [Validators.required]
+      ),
       image: new FormControl(''),
     });
   }
-
-  @Output() onSubmit = new EventEmitter<Moment>();
 
   get title() {
     return this.momentForm.get('title')!;
@@ -32,10 +42,6 @@ export class MomentFormComponent implements OnInit {
     const file: File = event.target.files[0];
     this.momentForm.patchValue({ image: file });
   }
-
-  @Input() btnText!: string;
-
-  momentForm!: FormGroup;
 
   submit() {
     if (this.momentForm.invalid) {
